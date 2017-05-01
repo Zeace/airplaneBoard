@@ -1,0 +1,62 @@
+table {
+    font-family: "Times New Roman", Serif;
+    font-size: 14px;
+    border-collapse: collapse;
+    text-align: center;
+    margin: auto;
+}
+tr:first-child td{
+    background: #AFCDE7;
+    color: #001cff;
+    padding: 10px 20px;
+}
+td {
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    border-color: white;
+    padding: 5px;
+}
+td {
+    background: #D8E6F3;
+}
+
+.filters {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 50px;
+}
+
+.filters div{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.filters div span {
+    margin: auto;
+}
+
+.none {
+    background: none !important;
+    padding: 0 !important;
+    width: 35px;
+}
+
+.add-plane {
+    margin: 10px -220px 0 0;
+}
+.editor {
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.edit {
+    width: 400px;
+}
+
+.row:first-child .admin button {
+    display: none;
+}
