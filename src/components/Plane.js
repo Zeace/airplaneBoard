@@ -9,26 +9,33 @@ class Planes extends Component {
         this.props.delPlane(this.props.id)
     }
     redPlane() {
-        console.log(this.props);
-        this.props.inputUpdate(this.props)
-        let prop = this.props.inputForm;
-        for (let key in prop) {
-            if (prop[key] === '') {
-                alert('Введите все параметры!');
+        if (this.props.inputForm.visible) {
 
-                return
+            let prop = this.props.inputForm;
+            for (let key in prop) {
+                if (prop[key] === '') {
+                    alert('Введите все параметры!');
+
+                    return
+                }
             }
+            prop.id = consts.keyGen();
+            this.props.redPlane(prop, this.props.id);
+            this.props.changeVisible();
+        } else {
+            this.props.inputUpdate(this.props);
+            this.props.changeVisible();
         }
-        prop.id = consts.keyGen();
-        this.props.redPlane(prop, this.props.id);
     }
     render() {
         const {number, departureTown, arrivalTown, typeOfPlane,
             arrivalTime, actualTime, status} = this.props;
 
         return <tr className='row'>
-            <td className='none admin'><button onClick={::this.delPlane}/></td>
-            <td className='none admin'><button onClick={::this.redPlane}/></td>
+            <td className='none admin'><button onClick={::this.delPlane}>Удалить</button></td>
+            <td className='none admin'>
+                <button onClick={::this.redPlane}>{this.props.inputForm.visible?'Сохранить':'Изменить'}</button>
+            </td>
             <td className='number'>{number}</td>
             <td className='departureTown'>{departureTown}</td>
             <td className='arrivalTown'>{arrivalTown}</td>

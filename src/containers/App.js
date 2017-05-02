@@ -13,8 +13,7 @@ class App extends Component {
         var delOnePlane=this.props.pageActions.delPlane;
         var redThisPlane=this.props.pageActions.redPlane;
         var inputFill=this.props.pageActions.inputUpdate;
-        console.log('input');
-        console.log(this.props.inputForm);
+        var changeVisibl=this.props.pageActions.changeVisible;
 
         return <div className='app'>
             <Filter count={this.props.planes.planeList.length - 1}
@@ -36,16 +35,18 @@ class App extends Component {
                                   delPlane={delOnePlane}
                                   redPlane={redThisPlane}
                                   inputUpdate={inputFill}
+                                  changeVisible={changeVisibl}
                                   />
                 })}
                 <tr>
                     <td className='none'>
-                        <EditButton addPlane={this.props.pageActions.addPlane} props={this.props.inputForm}/>
+                        <EditButton addPlane={this.props.pageActions.addPlane}
+                                    changeVisible={this.props.pageActions.changeVisible}
+                                    props={this.props.inputForm}/>
                     </td>
                 </tr>
                 </tbody>
             </table>
-            <div></div>
             <Editor props={this.props.inputForm}/>
         </div>;
     }

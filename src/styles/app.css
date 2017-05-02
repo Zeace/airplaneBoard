@@ -46,17 +46,13 @@ td {
 .add-plane {
     margin: 10px -220px 0 0;
 }
-.editor {
-    width: 800px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.edit {
-    width: 400px;
-}
 
 .row:first-child .admin button {
     display: none;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

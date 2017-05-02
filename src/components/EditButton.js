@@ -10,20 +10,25 @@ import consts from '../constants/Planes'
 
 class EditButton extends Component {
     onAddPlaneBtnClick() {
-        let prop = this.props.inputForm;
-        for (let key in prop) {
-            if (prop[key] === '') {
-                alert('Введите все параметры!');
+        if (this.props.inputForm.visible) {
+            let prop = this.props.inputForm;
+            for (let key in prop) {
+                if (prop[key] === '') {
+                    alert('Введите все параметры!');
 
-                return
+                    return
+                }
             }
+            prop.id = consts.keyGen();
+            this.props.addPlane(prop);
+            this.props.changeVisible();
+        } else {
+            this.props.changeVisible();
         }
-        prop.id = consts.keyGen();
-        this.props.addPlane(prop);
     }
     render() {
         return <button className='add-plane' onClick={::this.onAddPlaneBtnClick}>
-            Добавить рейс
+            {this.props.inputForm.visible ? 'Добавить' : 'Добавить рейс'}
         </button>;
     }
 }
@@ -35,3 +40,4 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(EditButton);
+

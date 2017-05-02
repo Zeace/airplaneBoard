@@ -57,10 +57,6 @@ export default function planes(state = JSON.parse(JSON.stringify(initialState)),
                     return el.id !== action.payload
                 })
             }
-            newState = {
-                planeList: state.planeList,
-                notFilteredPlane: initialState.planeList
-            }
 
             return {
                 planeList: newState.planeList,

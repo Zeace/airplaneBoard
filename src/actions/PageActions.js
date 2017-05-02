@@ -50,4 +50,10 @@ function inputUpdate(values) {
     }
 }
 
-export {addPlane, delPlane, redPlane, filterDepartureTown, filterArrivalTown, filterStatus, inputUpdate}
+function changeVisible() {
+    return {
+        type: 'VISIBLE_CHANGE'
+    }
+}
+
+export {addPlane, delPlane, redPlane, filterDepartureTown, filterArrivalTown, filterStatus, inputUpdate, changeVisible}
