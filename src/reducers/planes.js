@@ -3,7 +3,7 @@ import consts from '../constants/Planes'
 const initialState = {
     planeList: [
         {
-            id: consts.keyGen(),
+            id: 'header',
             number: '№',
             departureTown: 'Отправление',
             arrivalTown: 'Прибытие',
@@ -34,112 +34,71 @@ const initialState = {
         }
     ]
 };
-initialState.notFilteredPlane = initialState.planeList;
+initialState.notFilteredPlane = JSON.parse(JSON.stringify(initialState.planeList));
 
 export default function planes(state = JSON.parse(JSON.stringify(initialState)), action) {
     let newState;
     switch (action.type) {
         case 'ADD_PLANE':
-            state.planeList.push(JSON.parse(JSON.stringify(action.payload)));
-            newState = {
-                planeList: state.planeList,
-                notFilteredPlane: state.planeList
-            }
+            state.notFilteredPlane.push(JSON.parse(JSON.stringify(action.payload)));
 
             return {
-                planeList: newState.planeList,
-                notFilteredPlane: newState.planeList
+                planeList: state.notFilteredPlane,
+                notFilteredPlane: state.notFilteredPlane
             };
 
         case 'DEL_PLANE':
-            newState = {
-                planeList: state.planeList.filter(function (el) {
-                    return el.id !== action.payload
-                })
-            }
+            newState = state.notFilteredPlane.filter(function (el) {
+                return el.id !== action.payload
+            });
 
             return {
-                planeList: newState.planeList,
-                notFilteredPlane: newState.planeList
+                planeList: newState,
+                notFilteredPlane: newState
             };
 
         case 'RED_PLANE':
-            for (var i=0;i<state.planeList.length;i++){
-                if (state.planeList[i].id === action.id) {
-                    state.planeList[i] = action.payload;
+            for (var i = 0; i < state.notFilteredPlane.length; i++) {
+                if (state.notFilteredPlane[i].id === action.id) {
+                    state.notFilteredPlane[i] = action.payload;
                     break;
                 }
             }
 
             return {
-                planeList: state.planeList,
-                notFilteredPlane: state.planeList
-            };
-
-        case 'FILTER_DEPARTURE':
-            if (action.payload !== '') {
-                newState = {
-                    planeList: state.planeList.filter(function (el) {
-                        return el.departureTown.toLowerCase().indexOf(action.payload) !== -1;
-                    }),
-                    notFilteredPlane: state.notFilteredPlane
-                };
-                newState.planeList.unshift(state.notFilteredPlane[0])
-
-                return {
-                    planeList: newState.planeList,
-                    notFilteredPlane: state.notFilteredPlane
-                };
-            }
-
-            return {
                 planeList: state.notFilteredPlane,
                 notFilteredPlane: state.notFilteredPlane
             };
 
-
-        case 'FILTER_ARRIVAL':
-            if (action.payload !== '') {
-                newState = {
-                    planeList: state.planeList.filter(function (el) {
-                        return el.arrivalTown.toLowerCase().indexOf(action.payload) !== -1;
-                    }),
-                    notFilteredPlane: state.notFilteredPlane
-                };
-                newState.planeList.unshift(state.notFilteredPlane[0])
-
-                return {
-                    planeList: newState.planeList,
-                    notFilteredPlane: state.notFilteredPlane
-                };
+        case 'FILTER':
+            newState = JSON.parse(JSON.stringify(state.notFilteredPlane));
+            console.log(newState);
+            if (action.payload.departureTown !== '') {
+                newState = newState.filter(function (el) {
+                    return el.departureTown.toLowerCase().indexOf(action.payload.departureTown) !== -1;
+                });
+            }
+            if (action.payload.arrivalTown !== '') {
+                newState = newState.filter(function (el) {
+                    return el.arrivalTown.toLowerCase().indexOf(action.payload.arrivalTown) !== -1;
+                });
+            }
+            if (action.payload.status !== '') {
+                newState = newState.filter(function (el) {
+                    return el.status.toLowerCase().indexOf(action.payload.status) !== -1;
+                });
             }
 
-            return {
-                planeList: state.notFilteredPlane,
-                notFilteredPlane: state.notFilteredPlane
-            };
-
-        case 'FILTER_STATUS':
-            if (action.payload !== '') {
-                newState = {
-                    planeList: state.planeList.filter(function (el) {
-                        return el.status.indexOf(action.payload) !== -1;
-                    }),
-                    notFilteredPlane: state.notFilteredPlane
-                };
-                newState.planeList.unshift(state.notFilteredPlane[0])
-
-                return {
-                    planeList: newState.planeList,
-                    notFilteredPlane: state.notFilteredPlane
-                };
+            console.log(newState);
+            if (newState.length === 0 || newState[0].id !== 'header') {
+                newState.unshift(initialState.planeList[0])
             }
+            console.log(newState);
 
             return {
-                planeList: state.notFilteredPlane,
+                planeList: newState,
                 notFilteredPlane: state.notFilteredPlane
             };
-
 
         default:
             return state;

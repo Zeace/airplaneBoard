@@ -2,12 +2,6 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import consts from '../constants/Planes'
 
-// import ReactDOM from 'react-dom';
-//
-// import Editor from '../containers/Editor';
-// import PropTypes from 'prop-types';
-
-
 class EditButton extends Component {
     onAddPlaneBtnClick() {
         if (this.props.inputForm.visible) {
@@ -26,6 +20,7 @@ class EditButton extends Component {
             this.props.changeVisible();
         }
     }
+
     render() {
         return <button className='add-plane' onClick={::this.onAddPlaneBtnClick}>
             {this.props.inputForm.visible ? 'Добавить' : 'Добавить рейс'}

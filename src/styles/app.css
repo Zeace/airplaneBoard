@@ -5,17 +5,20 @@ table {
     text-align: center;
     margin: auto;
 }
-tr:first-child td{
+
+tr:first-child td {
     background: #AFCDE7;
     color: #001cff;
     padding: 10px 20px;
 }
+
 td {
     border-style: solid;
     border-width: 0 1px 1px 0;
     border-color: white;
     padding: 5px;
 }
+
 td {
     background: #D8E6F3;
 }
@@ -27,7 +30,7 @@ td {
     margin-left: 50px;
 }
 
-.filters div{
+.filters div {
     display: flex;
     flex-direction: column;
     margin: 10px;

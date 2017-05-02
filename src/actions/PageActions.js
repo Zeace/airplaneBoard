@@ -1,5 +1,3 @@
-// import TIME_OPTIONS from '../constants/Planes';
-
 function addPlane(props) {
     return {
         type: 'ADD_PLANE',
@@ -22,24 +20,14 @@ function redPlane(props, id) {
     }
 }
 
-function filterDepartureTown(text) {
+function filter(prop) {
     return {
-        type: 'FILTER_DEPARTURE',
-        payload: text
-    }
-}
-
-function filterArrivalTown(text) {
-    return {
-        type: 'FILTER_ARRIVAL',
-        payload: text
-    }
-}
-
-function filterStatus(text) {
-    return {
-        type: 'FILTER_STATUS',
-        payload: text
+        type: 'FILTER',
+        payload: {
+            departureTown: prop.departureTown.toLowerCase(),
+            arrivalTown: prop.arrivalTown.toLowerCase(),
+            status: prop.status.toLowerCase()
+        }
     }
 }
 
@@ -56,4 +44,4 @@ function changeVisible() {
     }
 }
 
-export {addPlane, delPlane, redPlane, filterDepartureTown, filterArrivalTown, filterStatus, inputUpdate, changeVisible}
+export {addPlane, delPlane, redPlane, filter, inputUpdate, changeVisible}

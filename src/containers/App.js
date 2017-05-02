@@ -10,16 +10,15 @@ import consts from '../constants/Planes'
 
 class App extends Component {
     render() {
-        var delOnePlane=this.props.pageActions.delPlane;
-        var redThisPlane=this.props.pageActions.redPlane;
-        var inputFill=this.props.pageActions.inputUpdate;
-        var changeVisibl=this.props.pageActions.changeVisible;
+        var delOnePlane = this.props.pageActions.delPlane;
+        var redThisPlane = this.props.pageActions.redPlane;
+        var inputFill = this.props.pageActions.inputUpdate;
+        var changeVisibl = this.props.pageActions.changeVisible;
 
         return <div className='app'>
             <Filter count={this.props.planes.planeList.length - 1}
-                    filterDepartureTown={this.props.pageActions.filterDepartureTown}
-                    filterArrivalTown={this.props.pageActions.filterArrivalTown}
-                    filterStatus={this.props.pageActions.filterStatus}/>
+                    filter={this.props.pageActions.filter}
+                    props={this.props.inputForm}/>
             <table className='table'>
                 <tbody>
                 {this.props.planes.planeList.map(function (el) {
@@ -36,7 +35,7 @@ class App extends Component {
                                   redPlane={redThisPlane}
                                   inputUpdate={inputFill}
                                   changeVisible={changeVisibl}
-                                  />
+                    />
                 })}
                 <tr>
                     <td className='none'>
@@ -55,7 +54,8 @@ class App extends Component {
 function mapStateToProps(state) {
     return {
         planes: state.planes,
-        inputForm: state.inputForm
+        inputForm: state.inputForm,
+        filters: state.filters
     };
 }
 

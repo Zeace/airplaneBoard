@@ -3,39 +3,51 @@ import {connect} from 'react-redux';
 import consts from '../constants/Planes'
 
 class Filter extends Component {
-    depTownSearch(event) {
-        console.log(event.target.value.toLowerCase());
-        this.props.filterDepartureTown(event.target.value);
-    }
-
-    arrTownSearch(event) {
-        console.log(event.target.value.toLowerCase());
-        this.props.filterArrivalTown(event.target.value);
-    }
-
-    statusSearch(event) {
-        console.log(event.target.value);
-        this.props.filterStatus(event.target.value);
+    filterChange(e) {
+        switch (e.target.name) {
+            case 'departureTown':
+                this.props.filters.departureTown = e.target.value;
+                break;
+            case 'arrivalTown':
+                this.props.filters.arrivalTown = e.target.value;
+                break;
+            case 'status':
+                this.props.filters.status = e.target.value;
+                break;
+        }
+        console.log('вызов');
+        this.props.filter(this.props.filters);
     }
 
     render() {
+        const {departureTown, arrivalTown, status} = this.props.filters;
 
         return <div className='filters'>
             <div className='plane-count'>
                 <span>Всего рейсов</span>
-                <input type='text' disabled='true' value={this.props.count}/>
+                <input type='text'
+                       disabled='true'
+                       value={this.props.count}/>
             </div>
             <div className='town-filter'>
                 <span>Город вылета</span>
-                <input type='text' onChange={::this.depTownSearch}/>
+                <input type='text'
+                       name='departureTown'
+                       defaultValue={departureTown}
+                       onChange={::this.filterChange}/>
             </div>
             <div className='town-filter'>
                 <span>Город прилета</span>
-                <input type='text' onChange={::this.arrTownSearch}/>
+                <input type='text'
+                       name='arrivalTown'
+                       defaultValue={arrivalTown}
+                       onChange={::this.filterChange}/>
             </div>
             <div className='status-select'>
                 <span>Статус</span>
-                <select onChange={::this.statusSearch}>
+                <select defaultValue={status}
+                        name='status'
+                        onChange={::this.filterChange}>
                     {consts.STATUSES.map(function (el) {
                         return <option key={el}>{el} </option>
                     })}
@@ -45,8 +57,10 @@ class Filter extends Component {
     }
 }
 
-function mapStateToProps() {
-    return {};
+function mapStateToProps(state) {
+    return {
+        filters: state.filters
+    };
 }
 
 export default connect(mapStateToProps)(Filter);

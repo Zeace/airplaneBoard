@@ -1,9 +1,8 @@
-function keyGen () {
+function keyGen() {
     return Math.random().toString(36).substr(2, 9);
 }
 
-
-const STATUSES = ['','Вылетел','Приземлился','Посадка','Задержан'];
+const STATUSES = ['', 'Вылетел', 'Приземлился', 'Посадка', 'Задержан'];
 
 const TIME_OPTIONS = {
     month: 'long',
