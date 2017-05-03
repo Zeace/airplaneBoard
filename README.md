@@ -15,7 +15,7 @@
 Счетчик рейсов отражает количество отображаемых рейсов.
 
 ## Используемые функции
-###addPlane(props) 
+### addPlane(props) 
 Принимает объект  со значениями параметров рейса и значение его id. Изменяет параметры рейса с заданным id<br />
 <strong>props:</strong><br />
 number (string): номер рейса<br />
@@ -26,11 +26,11 @@ arrivalTime (string): время прибытия<br />
 actualTime (string): фактическое время<br />
 status (string): статус<br />
 
-###delPlane(id) 
+### delPlane(id) 
 Принимает id рейса. Удаляет данны рейс.<br />
 <strong>id</strong> (string): id рейса
 
-###redPlane(props, id) 
+### redPlane(props, id) 
 Принимает объект  со значениями параметров рейса и значение его id. Изменяет параметры рейса с заданным id<br />
 <strong>props:</strong><br />
 number (string): номер рейса<br />
@@ -43,14 +43,14 @@ status (string): статус<br />
 
 <strong>id</strong> (string): id рейса
 
-###filter(prop) 
+### filter(prop) 
 Принимает объект со значениями фильтров. Возвращает отфильтрованный массив рейсов<br />
 <strong>prop:</strong><br />
 departureTown (string): город отправления<br />
 arrivalTown (string): город прибытия<br />
 status (string): статус<br />
 
-###inputUpdate(values) 
+### inputUpdate(values) 
 Принимает объект со значениями для блока ввода данных. Инвертирует состояние видимости<br />
 <strong>values:</strong><br />
 number (string): номер рейса<br />
@@ -62,5 +62,5 @@ actualTime (string): фактическое время<br />
 status (string): статус<br />
 visible (bool): видна ли форма
 
-###changeVisible()
+### changeVisible()
 Изменяет видимость блока для ввода данных 
