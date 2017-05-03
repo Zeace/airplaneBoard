@@ -10,10 +10,11 @@ import consts from '../constants/Planes'
 
 class App extends Component {
     render() {
-        var delOnePlane = this.props.pageActions.delPlane;
-        var redThisPlane = this.props.pageActions.redPlane;
-        var inputFill = this.props.pageActions.inputUpdate;
-        var changeVisibl = this.props.pageActions.changeVisible;
+        var delPlane = this.props.pageActions.delPlane;
+        var redPlane = this.props.pageActions.redPlane;
+        var inputUpdate = this.props.pageActions.inputUpdate;
+        var changeVisible = this.props.pageActions.changeVisible;
+        var addPlane = this.props.pageActions.addPlane;
 
         return <div className='app'>
             <Filter count={this.props.planes.planeList.length - 1}
@@ -31,16 +32,15 @@ class App extends Component {
                                   arrivalTime={el.arrivalTime}
                                   actualTime={el.actualTime}
                                   status={el.status}
-                                  delPlane={delOnePlane}
-                                  redPlane={redThisPlane}
-                                  inputUpdate={inputFill}
-                                  changeVisible={changeVisibl}
-                    />
+                                  delPlane={delPlane}
+                                  redPlane={redPlane}
+                                  inputUpdate={inputUpdate}
+                                  changeVisible={changeVisible}/>
                 })}
                 <tr>
                     <td className='none'>
-                        <EditButton addPlane={this.props.pageActions.addPlane}
-                                    changeVisible={this.props.pageActions.changeVisible}
+                        <EditButton addPlane={addPlane}
+                                    changeVisible={changeVisible}
                                     props={this.props.inputForm}/>
                     </td>
                 </tr>

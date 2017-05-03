@@ -20,7 +20,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin()
     ],
     module: {
-        rules: [ //все остальное осталось не тронутым
+        rules: [
             {
                 test: /\.js$/,
                 enforce: "pre",
@@ -52,13 +52,6 @@ module.exports = {
                 loader: 'style-loader!css-loader',
                 include: [
                     path.resolve(__dirname, "src"),
-                ]
-            },
-            {
-                test: /\.png$/,
-                loader : 'file-loader?name=[path][name]',
-                include: [
-                    path.resolve(__dirname, "img"),
                 ]
             }
         ]

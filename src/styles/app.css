@@ -1,33 +1,58 @@
-table {
-    font-family: "Times New Roman", Serif;
-    font-size: 14px;
+.app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: arial,sans-serif;
+    font-size: 14px
+}
+
+.button {
+    margin: 3px;
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 2px;
+    background: rgb(245,245,245) ;
+}
+.button:hover {
+    border: 1px solid rgb(198,198,198);
+    background: #f7f7f7 ;
+    box-shadow: 0 1px 2px rgba(0,0,0,.1);
+}
+
+.button:active {
+    border: 1px solid rgb(204,204,204);
+    background: rgb(238,238,238);
+    box-shadow: 0 1px 2px rgba(0,0,0,.1) inset;
+}
+
+.table {
     border-collapse: collapse;
     text-align: center;
     margin: auto;
 }
 
-tr:first-child td {
+.table tr:first-child td {
     background: #AFCDE7;
     color: #001cff;
     padding: 10px 20px;
 }
 
-td {
+.table td {
+    width: 100px;
     border-style: solid;
     border-width: 0 1px 1px 0;
     border-color: white;
     padding: 5px;
+    background: #D8E6F3;
 }
 
-td {
-    background: #D8E6F3;
+.row:first-child .admin button {
+    display: none;
 }
 
 .filters {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-left: 50px;
 }
 
 .filters div {
@@ -43,19 +68,31 @@ td {
 .none {
     background: none !important;
     padding: 0 !important;
-    width: 35px;
+    width: 85px !important;
+}
+
+.editor {
+    width: 325px;
+    margin: auto;
 }
 
 .add-plane {
-    margin: 10px -220px 0 0;
+    margin: 10px -370px 0 0!important;
 }
 
-.row:first-child .admin button {
-    display: none;
-}
-
-.app {
+.input {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+}
+
+.input input,
+.input select {
+    margin: 3px 20px;
+}
+
+.filter-input {
+    width: 150px;
+    text-align: center;
+    background-color: white;
+    border: 1px solid rgb(204,204,204);
 }

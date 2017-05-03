@@ -36,10 +36,12 @@ class Planes extends Component {
 
         return <tr className='row'>
             <td className='none admin'>
-                <button onClick={::this.delPlane}>Удалить</button>
+                <button className='button' onClick={::this.delPlane}>Удалить</button>
             </td>
             <td className='none admin'>
-                <button onClick={::this.redPlane}>{this.props.inputForm.visible ? 'Сохранить' : 'Изменить'}</button>
+                <button className='button' onClick={::this.redPlane}>
+                    {this.props.inputForm.visible ? 'Сохранить' : 'Изменить'}
+                    </button>
             </td>
             <td className='number'>{number}</td>
             <td className='departureTown'>{departureTown}</td>

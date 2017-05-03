@@ -25,27 +25,31 @@ class Filter extends Component {
         return <div className='filters'>
             <div className='plane-count'>
                 <span>Всего рейсов</span>
-                <input type='text'
+                <input className='filter-input'
+                       type='text'
                        disabled='true'
                        value={this.props.count}/>
             </div>
             <div className='town-filter'>
                 <span>Город вылета</span>
-                <input type='text'
+                <input className='filter-input'
+                       type='text'
                        name='departureTown'
                        defaultValue={departureTown}
                        onChange={::this.filterChange}/>
             </div>
             <div className='town-filter'>
                 <span>Город прилета</span>
-                <input type='text'
+                <input className='filter-input'
+                       type='text'
                        name='arrivalTown'
                        defaultValue={arrivalTown}
                        onChange={::this.filterChange}/>
             </div>
             <div className='status-select'>
                 <span>Статус</span>
-                <select defaultValue={status}
+                <select className='filter-input'
+                        defaultValue={status}
                         name='status'
                         onChange={::this.filterChange}>
                     {consts.STATUSES.map(function (el) {

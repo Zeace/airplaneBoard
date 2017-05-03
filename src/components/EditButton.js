@@ -22,7 +22,7 @@ class EditButton extends Component {
     }
 
     render() {
-        return <button className='add-plane' onClick={::this.onAddPlaneBtnClick}>
+        return <button className='add-plane button' onClick={::this.onAddPlaneBtnClick}>
             {this.props.inputForm.visible ? 'Добавить' : 'Добавить рейс'}
         </button>;
     }
